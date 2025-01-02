@@ -99,13 +99,22 @@ export default class Preloader extends Phaser.Scene {
     //--------------------------
 
     //WEB FONT
-    if (GameData.fonts != null) {
+    if (GameData.webfonts != null) {
       let _fonts: Array<string> = [];
-      GameData.fonts.forEach((element: FontAsset) => {
+      GameData.webfonts.forEach((element: FontAsset) => {
         _fonts.push(element.key);
       });
       this.load.addFile(new WebFontFile(this.load, _fonts));
     }
+
+      //local FONT
+      if (GameData.fonts != null) {
+        let _fonts: Array<string> = [];
+        GameData.fonts.forEach((element: FontAsset) => {
+          this.load.font("ralewayRegular", "assets/fonts/raleway.regular.ttf","truetype");
+        });
+        
+      }
 
 
     //SCRIPT

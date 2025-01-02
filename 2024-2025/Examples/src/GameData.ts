@@ -289,5 +289,7 @@ export let GameData: gameData = {
       instance: { instance: 10 },
     },
   ],
-  bitmapfonts: []
+  fonts: [{key:"ralewayRegular", path:"assets/fonts/raleway.regular.ttf",type:"truetype"}],
+  webfonts: [{ key: 'Nosifer' }, { key: 'Roboto' }, { key: 'Press+Start+2P' }, { key: 'Rubik+Doodle+Shadow' }, { key: 'Rubik+Glitch' }],
+  bitmapfonts: [{ name: 'arcade', imgpath: 'assets/fonts/arcade.png', xmlpath: 'assets/fonts/arcade.xml' }],
 };

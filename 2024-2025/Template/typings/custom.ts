@@ -26,10 +26,11 @@ interface gameData {
   sounds?: Array<SoundAsset>,
   videos?: Array<VideoAsset>,
   audios?: Array<AudioSpriteAsset>,
-  bitmapfonts?: Array<BitmapfontAsset>,
   scripts?: Array<ScriptAsset>,
   tilemaps?: Array<TileMapsAsset>,
   fonts?: Array<FontAsset>,
+  webfonts?: Array<FontAsset>,
+  bitmapfonts?: Array<BitmapfontAsset>,
 
 }
 
@@ -62,7 +63,11 @@ interface TileMapsAsset {
 
 interface FontAsset {
   key: string;
+  path?: string;
+  type?: string;
 }
+
+
 
 interface SpritesheetsAsset {
   name: string;

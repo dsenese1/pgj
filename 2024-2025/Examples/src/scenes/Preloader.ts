@@ -86,8 +86,23 @@ export default class Preloader extends Phaser.Scene {
     //Assets Load
     //--------------------------
 
-    //WEB FONT
-    this.load.addFile(new WebFontFile(this.load, 'Roboto'));
+       //WEB FONT
+       if (GameData.webfonts != null) {
+        let _fonts: Array<string> = [];
+        GameData.webfonts.forEach((element: FontAsset) => {
+          _fonts.push(element.key);
+        });
+        this.load.addFile(new WebFontFile(this.load, _fonts));
+      }
+  
+      //local FONT
+      if (GameData.fonts != null) {
+        let _fonts: Array<string> = [];
+        GameData.fonts.forEach((element: FontAsset) => {
+          this.load.font(element.key, element.path,element.type);
+        });
+        
+      }
 
     //SCRIPT
     if (GameData.scripts != null)

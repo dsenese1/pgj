@@ -6,6 +6,10 @@ export default class Intro extends Phaser.Scene {
   private _text4: Phaser.GameObjects.Text;
   private _text5: Phaser.GameObjects.Text;
   private _text6: Phaser.GameObjects.Text;
+
+  private _text7: Phaser.GameObjects.Text;
+  private _text8: Phaser.GameObjects.Text;
+  private _text9: Phaser.GameObjects.Text;
   private _counter: number = 0;
 
   constructor() {
@@ -62,6 +66,12 @@ export default class Intro extends Phaser.Scene {
     this._text6 = this.add.text(700, 300, "Rotating", { fontFamily: "Arial Black", fontSize: "44px", color: "#c51b7d" });
     this._text6.setStroke('#de77ae', 8).setShadow(2, 2, '#333333', 2, true, false).setOrigin(.5)
 
+
+    this._text7 = this.add.text(600, 500, "Raleway local font", { fontFamily: "ralewayRegular", fontSize: "44px", color: "#c51b7d" });
+
+    this._text8 = this.add.text(600, 600, "Nosifer web font", { fontFamily: "Nosifer", fontSize: "44px", color: "#c51b7d"});
+
+    this._text9 = this.add.text(600, 700, "Press space font", { fontFamily: "'Press Start 2P'", fontSize: "30px", color: "#c51b7d" });
 
 
   }

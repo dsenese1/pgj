@@ -35,6 +35,7 @@ interface gameData {
   scripts?: Array<ScriptAsset>,
   tilemaps?: Array<TileMapsAsset>,
   fonts?: Array<FontAsset>,
+  webfonts?: Array<FontAsset>,
 
 }
 
@@ -155,6 +156,8 @@ interface TileMapsAsset {
 
 interface FontAsset {
   key: string;
+  path?: string;
+  type?: string;
 }
 
 interface SpritesheetsAsset {

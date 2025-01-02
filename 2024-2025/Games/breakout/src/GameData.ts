@@ -292,6 +292,7 @@ export let GameData: gameData = {
   ],
 
   scripts: [],
-  fonts: [{ key: 'Roboto' }, { key: 'Orbitron' }, { key: 'Press+Start+2P' }],
+  fonts: [{key:"ralewayRegular", path:"assets/fonts/raleway.regular.ttf",type:"truetype"}],
+  webfonts: [{ key: 'Nosifer' }, { key: 'Roboto' }, { key: 'Press+Start+2P' }, { key: 'Rubik+Doodle+Shadow' }, { key: 'Rubik+Glitch' }],
   bitmapfonts: [{ name: 'arcade', imgpath: 'assets/fonts/arcade.png', xmlpath: 'assets/fonts/arcade.xml' }],
 };

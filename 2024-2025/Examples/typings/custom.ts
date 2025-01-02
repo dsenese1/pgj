@@ -30,6 +30,8 @@ interface gameData {
   bitmapfonts?: Array<BitmapfontAsset>,
   scripts?: Array<ScriptAsset>,
   tilemaps?: Array<TileMapsAsset>,
+  fonts?: Array<FontAsset>,
+  webfonts?: Array<FontAsset>,
 
 }
 
@@ -39,6 +41,13 @@ interface genericConfig {
   y: number;
   key: string;
 }
+
+interface FontAsset {
+  key: string;
+  path?: string;
+  type?: string;
+}
+
 
 interface ImageAsset {
   name: string;
