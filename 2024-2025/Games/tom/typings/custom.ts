@@ -31,6 +31,8 @@ interface gameData {
   fonts?: Array<FontAsset>,
   webfonts?: Array<FontAsset>,
   bitmapfonts?: Array<BitmapfontAsset>,
+  json?: Array<any>,
+  animations?: Array<any>
 
 }
 
@@ -40,6 +42,16 @@ interface genericConfig {
   y: number;
   key: string;
 }
+
+interface jsonAsset  {
+key: string;
+path: string;
+}
+
+interface animationAsset { 
+  key: string;
+  path: string;
+  }
 
 interface ImageAsset {
   name: string;

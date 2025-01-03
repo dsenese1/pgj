@@ -27,7 +27,7 @@ export default class Preloader extends Phaser.Scene {
         GameData.preloader.imageY,
         GameData.preloader.image
       )
-      .setAlpha(0).setScale(.4);
+      .setAlpha(0).setScale(.2);
 
     this.tweens.add({
       targets: [this._image],
@@ -70,6 +70,13 @@ export default class Preloader extends Phaser.Scene {
           duration: 500,
           onComplete: () => {
 
+
+            //custom code from https://phaser.io/examples/v3.85.0/games/view/tom
+            this.sound.play('bongo', {loop: true});
+            const fontData = this.cache.json.get('fontData');
+            this.cache.bitmapFont.add('pixelFont', Phaser.GameObjects.RetroFont.Parse(this, fontData));
+            //end custom code
+
             //fermiamo la scena corrente
             this.scene.stop("Preloader");
             //richiamiamo il metodo start della far partire la scena Intro
@@ -104,6 +111,24 @@ export default class Preloader extends Phaser.Scene {
       
     }
 
+
+     //JSON
+     if (GameData.json != null) {
+       GameData.json.forEach((element: jsonAsset) => {
+        this.load.json(element.key, element.path);
+      });
+      
+    }
+
+
+     //Animations
+     if (GameData.animations != null) {
+      
+      GameData.animations.forEach((element: jsonAsset) => {
+        this.load.animation(element.key, element.path);
+      });
+      
+    }
 
 
     //SCRIPT

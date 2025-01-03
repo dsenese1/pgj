@@ -1,55 +1,77 @@
+import path from "path";
+
 export let GameData: gameData = {
   globals: {
-    gameWidth: 1280,
-    gameHeight: 800,
+    gameWidth: 640,
+    gameHeight: 360,
     bgColor: "#ffffff",
     debug: false
   },
 
   preloader: {
     bgColor: "ffffff",
-    image: "logo",
-    imageX: 1280 / 2,
-    imageY: 800 / 2,
+    image: "logo-phaser",
+    imageX: 640 / 2,
+    imageY: 360 / 2,
     loadingText: "Caricamento...",
     loadingTextFont: "roboto",
     loadingTextComplete: "Tappa/clicca per iniziare!!",
-    loadingTextY: 700,
+    loadingTextY: 300,
     loadingBarColor: 0xff0000,
-    loadingBarY: 630,
+    loadingBarY: 230,
   },
 
   spritesheets: [
 
-    { name: "player", path: "assets/images/player.png", width: 82, height: 70, frames: 50 },
+   // { name: "player", path: "assets/images/player.png", width: 82, height: 70, frames: 50 },
 
   ],
   images: [
 
-    { name: "phaser", path: "assets/images/logo-phaser.png" },
-    { name: "freedoom", path: "assets/images/freedoom.png" },
-    { name: "thelucasart", path: "assets/images/thelucasart.png" },
-    { name: "intro-bg", path: "assets/images/intro-bg.jpg" },
-    { name: "bg-1", path: "assets/images/bg/1.png" },
-    { name: "bg-2", path: "assets/images/bg/2.png" },
-    { name: "bg-3", path: "assets/images/bg/3.png" },
-    { name: "bg-4", path: "assets/images/bg/4.png" },
-    { name: "bg-5", path: "assets/images/bg/5.png" },
-    { name: "bg-6", path: "assets/images/bg/6.png" },
-    { name: "bg-7", path: "assets/images/bg/7.png" },
-
-
+    { name: "background", path: "assets/images/background.png" },
+    { name: "floor", path: "assets/images/floor.png" },
+    { name: "wall", path: "assets/images/wall.png" },
+    { name: "bomb", path: "assets/images/bomb.png" },
+    { name: "tomato_item", path: "assets/images/tomato_item.png" },
+    { name: "life", path: "assets/images/life.png" },
+    { name: "logo", path: "assets/images/logo.png" },
+    { name: "font", path: "assets/fonts/font.png" },
+   
+   
 
   ],
-  atlas: [],
+
+  json:[
+    {key:"fontData",path:"assets/fonts/font.json"}
+  ],
+
+  animations: [{
+    key: "tomatoAnim",
+    path: "assets/images/tomato_anim.json",
+  }],
+
+  atlas: [{
+    key: "tomato",
+    jsonpath: "assets/images/tomato_atlas.json",
+    imagepath: "assets/images/tomato.png",
+  }],
+
   sounds: [
-    /*{
-    name: "music",
-    paths: ["assets/sounds/intro.ogg", "assets/sounds/intro.m4a"],
-    volume: 1,
-    loop: true,
-    frame: 1,
-  }*/
+    {
+    name: "bongo",
+    paths: ["assets/sounds/bongojam_f.mp3"],
+ 
+  },
+  {
+    name: "pop",
+    paths: ["assets/sounds/pop.mp3"],
+ 
+  },
+  {
+    name: "draw",
+    paths: ["assets/sounds/draw.mp3"],
+ 
+  }
   ],
 
   videos: [

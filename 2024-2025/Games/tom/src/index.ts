@@ -40,7 +40,9 @@ window.addEventListener("load", () => {
     ],
     physics: {
       default: "arcade",
-      arcade: { debug: GameData.globals.debug, }
+      arcade: {  
+        gravity: {x:0, y: 2000 },
+    debug: GameData.globals.debug, }
     },
 
     input: {
@@ -48,8 +50,8 @@ window.addEventListener("load", () => {
       keyboard: true,
     },
     render: {
-      pixelArt: false,
-      antialias: true,
+      pixelArt: true,
+      antialias: false,
     },
   };
 
