@@ -10,6 +10,8 @@ export default class Intro extends Phaser.Scene {
   private _text7: Phaser.GameObjects.Text;
   private _text8: Phaser.GameObjects.Text;
   private _text9: Phaser.GameObjects.Text;
+  private _text10: Phaser.GameObjects.BitmapText;
+  
   private _counter: number = 0;
 
   constructor() {
@@ -63,16 +65,17 @@ export default class Intro extends Phaser.Scene {
       })
 
 
-    this._text6 = this.add.text(700, 300, "Rotating", { fontFamily: "Arial Black", fontSize: "44px", color: "#c51b7d" });
+    this._text6 = this.add.text(700, 300, "HAPPY 2025!", { fontFamily: "Arial Black", fontSize: "44px", color: "#c51b7d" });
     this._text6.setStroke('#de77ae', 8).setShadow(2, 2, '#333333', 2, true, false).setOrigin(.5)
 
 
-    this._text7 = this.add.text(600, 500, "Raleway local font", { fontFamily: "ralewayRegular", fontSize: "44px", color: "#c51b7d" });
+    this._text7 = this.add.text(500, 500, "Raleway local TTF font", { fontFamily: "ralewayRegular", fontSize: "30px", color: "#c51b7d" });
 
-    this._text8 = this.add.text(600, 600, "Nosifer web font", { fontFamily: "Nosifer", fontSize: "44px", color: "#c51b7d"});
+    this._text8 = this.add.text(500, 550, "Nosifer web goole font", { fontFamily: "Nosifer", fontSize: "30px", color: "#c51b7d"});
 
-    this._text9 = this.add.text(600, 700, "Press space font", { fontFamily: "'Press Start 2P'", fontSize: "30px", color: "#c51b7d" });
+    this._text9 = this.add.text(500, 600, "Press space google font", { fontFamily: "'Press Start 2P'", fontSize: "30px", color: "#c51b7d" });
 
+    this._text10 = this.add.bitmapText(500, 650, "arcade", "bitmap text font", 30).setTint(0x00ff00);
 
   }
 

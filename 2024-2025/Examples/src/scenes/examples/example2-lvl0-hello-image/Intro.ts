@@ -5,8 +5,12 @@ export default class Intro extends Phaser.Scene {
   private _image3: Phaser.GameObjects.Image;
   private _image4: Phaser.GameObjects.Image;
   private _image5: Phaser.GameObjects.Image;
+  private _image6: Phaser.GameObjects.Image;
+  private _image7: Phaser.GameObjects.Image;
+  
   private _counter: number = 0;
   private _clicked: boolean = false;
+
 
   constructor() {
     super({
@@ -60,6 +64,14 @@ export default class Intro extends Phaser.Scene {
 
         this._image5.destroy();
       })
+
+
+
+      this._image6 = this.add.image(850, 200, "logo").setScale(.25).setDepth(1);
+      this._image7 = this.add.image(875, 200, "logo-phaser");
+     
+
+   
 
 
 
