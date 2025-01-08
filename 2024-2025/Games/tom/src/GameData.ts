@@ -1,4 +1,4 @@
-import path from "path";
+
 
 export let GameData: gameData = {
   globals: {
