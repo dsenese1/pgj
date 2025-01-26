@@ -1,7 +1,6 @@
 export default class Intro extends Phaser.Scene {
 
   private _image1: Phaser.GameObjects.Image;
-
   private music: Phaser.Sound.BaseSound;
 
 
@@ -61,11 +60,15 @@ export default class Intro extends Phaser.Scene {
     this.music = this.sound.add('music', { loop: true });
     this.music.play();
 
+    this.add.text(512, 600, 'Click to ', { fontFamily: 'Arial', fontSize: 48, color: '#ffffff' }).setOrigin(0.5).setStroke('#000000', 6);
+    this.add.image(512, 700, 'start').setScale(0.5);
     this.input.once('pointerdown', () => {
 
         this.sound.stopAll();
 
         this.sound.play('shot');
+
+        this.scene.stop(this);
 
         this.scene.start('GamePlay');
 

@@ -62,9 +62,11 @@ export default class Door extends Phaser.GameObjects.Container
         scene.add.existing(this);
     }
 
-    destroy ()
+    destroyDoor ()
     {
+      
         this.off('pointerup');
+        this.destroy();
     }
 
     start (time:number)
@@ -157,7 +159,9 @@ export default class Door extends Phaser.GameObjects.Container
 
     shoot ()
     {
-        if (!this.isOpen || this.scene.isPaused)
+
+        
+        if (!this.isOpen || this.scene._isPaused)
         {
             return;
         }
@@ -218,7 +222,7 @@ export default class Door extends Phaser.GameObjects.Container
         if (!closeDoor)
         {
             this.off('pointerup');
-            this.scene.isPaused = true;
+            this.scene._isPaused = true;
         }
     }
 
@@ -240,12 +244,12 @@ export default class Door extends Phaser.GameObjects.Container
     {
         this.off('pointerup');
 
-        this.scene.isPaused = true;
+        this.scene._isPaused = true;
 
         //  Shots
 
-        let shot1 = this.scene.add.image(this.x, this.y, 'https://labs.phaser.io/assets', this.characterFrame + 'shot1');
-        let shot2 = this.scene.add.image(this.x, this.y, 'https://labs.phaser.io/assets', this.characterFrame + 'shot2');
+        let shot1 = this.scene.add.image(this.x, this.y, 'bank-panic', this.characterFrame + 'shot1');
+        let shot2 = this.scene.add.image(this.x, this.y, 'bank-panic', this.characterFrame + 'shot2');
 
         this.scene.sound.play('banditShot');
         this.scene.sound.play('banditShot', { delay: 0.25 });
@@ -271,8 +275,8 @@ export default class Door extends Phaser.GameObjects.Container
 
         //  Gun smoke rising from the bandit
 
-        let smoke1 = this.scene.add.image(this.x, this.y, 'https://labs.phaser.io/assets', this.characterFrame + 'smoke1');
-        let smoke2 = this.scene.add.image(this.x, this.y, 'https://labs.phaser.io/assets', this.characterFrame + 'smoke2');
+        let smoke1 = this.scene.add.image(this.x, this.y, 'bank-panic', this.characterFrame + 'smoke1');
+        let smoke2 = this.scene.add.image(this.x, this.y, 'bank-panic', this.characterFrame + 'smoke2');
 
         this.scene.tweens.add({
             targets: smoke1,
@@ -293,6 +297,7 @@ export default class Door extends Phaser.GameObjects.Container
 
     update (time: number, delta: number)
     {
+   
         if (!this.isOpen && time >= this.timeToOpen)
         {
             this.openDoor(time);

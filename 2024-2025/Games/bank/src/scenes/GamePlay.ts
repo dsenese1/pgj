@@ -1,5 +1,4 @@
 import Door from "../gameComponents/Door";
-import { GameData } from "../GameData";
 
 export default class GamePlay extends Phaser.Scene {
 
@@ -7,7 +6,7 @@ export default class GamePlay extends Phaser.Scene {
   goals: Phaser.GameObjects.Image[];
   gold: Phaser.GameObjects.Group;
   doors: Door[];
-  isPaused: boolean;
+  _isPaused: boolean;
   goalsComplete: number;
   sign: Phaser.GameObjects.Image;
   level: number;
@@ -15,8 +14,6 @@ export default class GamePlay extends Phaser.Scene {
   killDelay: number;
   closeDurationLow: number;
   closeDurationHigh: number;
-
-  
 
 
   constructor() {
@@ -27,9 +24,9 @@ export default class GamePlay extends Phaser.Scene {
     this.hats;
     this.goals;
     this.gold;
-    this.doors;
-
-    this.isPaused = false;
+    
+    this.doors = [];
+    this._isPaused = false;
     this.goalsComplete = 0;
     this.sign;
 
@@ -48,15 +45,17 @@ export default class GamePlay extends Phaser.Scene {
 
 
   create() {
+
+   
     this.add.image(512, 384, 'background');
 
         //  Level text
         this.add.image(450, 650, 'bank-panic', 'levelText');
 
         this.levelImage = this.add.image(600, 650, 'bank-panic', '1');
-
-        this.createGoals();
-        this.createDoors();
+       
+       this.createGoals();
+       this.createDoors();
 
         this.hats = this.add.group({
             defaultKey: 'bank-panic',
@@ -80,16 +79,19 @@ export default class GamePlay extends Phaser.Scene {
             maxSize: 12
         });
 
-        this.isPaused = false;
+        this._isPaused = false;
 
         this.level = 1;
         this.killDelay = 0.8;
         this.closeDurationLow = 2000;
         this.closeDurationHigh = 4000;
 
+    if(this.doors.length > 0){
         this.doors.forEach((door) => {
             door.start(this.game.getTime());
-        });
+        });}
+
+    
   }
 
   createGoals ()
@@ -187,9 +189,23 @@ export default class GamePlay extends Phaser.Scene {
 
   levelFail ()
   {
-      this.isPaused = true;
+    
 
-      this.sign = this.add.image(512, -200, 'bank-panic', 'gameOver');
+      this._isPaused = true;
+
+      
+     
+
+      this.sign = this.add.image(512, -200, 'bank-panic', 'gameOver').on('pointerdown', () =>  {
+    
+        this.doors.forEach((door:any) => {
+            door.destroyDoor();
+        });
+      this.scene.stop(this);
+
+        this.scene.start('Intro')
+    
+    });
 
       this.sound.play('gameOver');
 
@@ -199,14 +215,18 @@ export default class GamePlay extends Phaser.Scene {
           ease: 'Bounce.easeOut',
           duration: 1500,
           onComplete: () => {
-              this.input.once('pointerdown', () => this.scene.start('MainMenu'));
+
+         this.sign.setInteractive();
+
+
+           
           }
       });
   }
 
   levelComplete ()
   {
-      this.isPaused = true;
+      this._isPaused = true;
 
       this.sign = this.add.image(512, -200, 'bank-panic', 'levelComplete');
 
@@ -262,7 +282,7 @@ export default class GamePlay extends Phaser.Scene {
 
       this.sign.setVisible(false);
 
-      this.isPaused = false;
+      this._isPaused = false;
   }
 
   killed (x:number, y:number)
@@ -270,6 +290,7 @@ export default class GamePlay extends Phaser.Scene {
       //  Bullet holes on the screen
 
       let offsetX = 100;
+
 
       for (let i = 0; i < 3; i++)
       {
@@ -293,7 +314,7 @@ export default class GamePlay extends Phaser.Scene {
 
 
   update(time: number, delta: number): void {
-    if (!this.isPaused)
+    if (!this._isPaused)
       {
           this.doors.forEach((door:any) => {
               door.update(time);

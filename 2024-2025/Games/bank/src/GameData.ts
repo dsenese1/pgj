@@ -30,7 +30,7 @@ export let GameData: gameData = {
     { name: "title", path: "assets/images/title.png" },
     { name: "logo", path: "assets/images/logo.png" },
     { name: "background", path: "assets/images/background.png" },
-    { name: "bulletHole", path: "assets/images/bg/bullet-hole.png" },
+    { name: "bulletHole", path: "assets/images/bullet-hole.png" },
 
 
 
