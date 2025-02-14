@@ -12,7 +12,7 @@ export default class Intro extends Phaser.Scene {
   }
 
   preload() {
-
+    console.log("Test");
 
   }
   create() {
